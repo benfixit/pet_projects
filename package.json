@@ -7,5 +7,8 @@
   "workspaces": ["packages/*"],
   "devDependencies": {
     "lerna": "^3.14.1"
+  },
+  "scripts": {
+    "run:weight": "cd packages/weight_tracker && yarn start"
   }
 }
