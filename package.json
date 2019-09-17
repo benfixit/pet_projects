@@ -5,10 +5,15 @@
   "packages": ["packages/*"],
   "useWorkspaces": true,
   "workspaces": ["packages/*"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benfixit/pet_projects"
+  },
   "devDependencies": {
     "lerna": "^3.14.1"
   },
   "scripts": {
-    "run:weight": "cd packages/weight_tracker && yarn start"
+    "run:weight": "cd packages/weight_tracker && yarn start",
+    "run:storybook": "cd packages/picasso && yarn run storybook"
   }
 }

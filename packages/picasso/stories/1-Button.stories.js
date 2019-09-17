@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { action } from '@storybook/addon-actions';
 import { Button } from '@storybook/react/demo';
 
@@ -15,3 +16,7 @@ export const emoji = () => (
     </span>
   </Button>
 );
+
+emoji.story = {
+  name: 'with emoji',
+};

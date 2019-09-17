@@ -7,7 +7,7 @@ storiesOf('Button', module)
     .add('with primary', () => <Button label='Primary Button' onClick={action('click')} />)
     .add('with warning', () => <Button 
         label='Warning Button' 
-        background={'warning'} 
+        type={'warning'} 
         onClick={action('click')} 
         style={{color: 'black'}}    
         />)
@@ -18,7 +18,7 @@ storiesOf('Button', module)
     />)
     .add('with rounded corners', () => <Button 
         label='Rounded Button'
-        background='danger'
+        type='danger'
         onClick={action('click')}
         style={{ borderRadius: '15px'}}
     />)

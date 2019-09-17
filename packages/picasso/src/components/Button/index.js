@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const btnBackground = {
+const btnType = {
     primary: '#000099',
     secondary: 'blue',
     success: '#009900',
@@ -13,7 +13,7 @@ const btnBackground = {
 }
 
 const StyledButton = styled.button`
-    background-color: ${props => btnBackground[props.background]};
+    background-color: ${props => btnType[props.type]};
     color: ${props => props.color};
     padding: 10px;
     border-radius: 4px;
@@ -29,13 +29,13 @@ const Button = props => {
 
 Button.defaultProps = {
     label: '',
-    background: 'primary',
+    type: 'primary',
     color: 'white'
 }
 
 Button.propTypes = {
     label: PropTypes.string,
-    background: PropTypes.string,
+    type: PropTypes.string,
     color: PropTypes.string
 }
 
