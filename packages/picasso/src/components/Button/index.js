@@ -1,42 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
-const btnType = {
-    primary: '#000099',
-    secondary: 'blue',
-    success: '#009900',
-    info: '#000099',
-    warning: 'yellow',
-    danger: '#990000',
-    link: 'white',
-}
+import { color, width, typography, space, border } from 'styled-system';
+import { themeGet } from '../../utils/theme';
 
 const StyledButton = styled.button`
-    background-color: ${props => btnType[props.type]};
-    color: ${props => props.color};
-    padding: 10px;
-    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 2px 0 6px 0;
+    padding: 10px 20px;
+    border-radius: 3px;
+    border: none;
+    background-color: ${themeGet('colors.primary')};
+    background-image: linear-gradient(to bottom, ${themeGet(
+      'colors.primary'
+    )}, #2980b9);
+    color: ${themeGet('colors.white')};
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
     outline: none;
+    ${color}
+    ${width}
+    ${typography}
+    ${space}
+    ${border}
+    :hover {
+        cursor: pointer;
+        background-color: #3cb0fd;
+        background-image: linear-gradient(to bottom, #3cb0fd, ${themeGet(
+          'colors.primary'
+        )});
+    }
 `;
 
 const Button = props => {
-    const { label, ...rest } = props;
-    return (
-        <StyledButton {...rest} onClick={() => console.log('Button Clicked!!!')}>{label}</StyledButton>
-    );
-}
-
-Button.defaultProps = {
-    label: '',
-    type: 'primary',
-    color: 'white'
-}
+  const { children, ...rest } = props;
+  return <StyledButton {...rest}>{children}</StyledButton>;
+};
 
 Button.propTypes = {
-    label: PropTypes.string,
-    type: PropTypes.string,
-    color: PropTypes.string
-}
+  children: PropTypes.node
+};
+
+Button.defaultProps = {
+  children: ''
+};
 
 export default Button;
