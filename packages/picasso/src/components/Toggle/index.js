@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { BooleanValue } from 'react-values';
 import { themeGet } from '../../utils/theme';
 
-const SwitchContainer = styled.div`
+const ToggleContainer = styled.div`
   position: relative;
   width: 50px;
   height: 25px;
@@ -15,7 +15,7 @@ const SwitchContainer = styled.div`
     props.on ? props.bg || themeGet('colors.primary') : 'lightGray'};
 `;
 
-const SwitchBall = styled.div`
+const ToggleBall = styled.div`
   position: absolute;
   transition: all 0.25s;
   top: 1px;
@@ -27,38 +27,35 @@ const SwitchBall = styled.div`
   background-color: ${themeGet('colors.white')};
 `;
 
-const Switcher = props => {
-  const { value, defaultValue, disabled, onChange, ...rest } = props;
+const Toggle = props => {
+  const { defaultValue, disabled, onChange, ...rest } = props;
   return (
     <BooleanValue
-      value={value}
       defaultValue={defaultValue}
       disabled={disabled}
       onChange={onChange}
     >
       {({ value: val, toggle }) => {
         return (
-          <SwitchContainer on={val} onClick={toggle} {...rest}>
-            <SwitchBall on={val} />
-          </SwitchContainer>
+          <ToggleContainer on={val} onClick={toggle} {...rest}>
+            <ToggleBall on={val} />
+          </ToggleContainer>
         );
       }}
     </BooleanValue>
   );
 };
 
-Switcher.propTypes = {
-  value: PropTypes.bool,
+Toggle.propTypes = {
   defaultValue: PropTypes.bool,
   disabled: PropTypes.bool,
   onChange: PropTypes.func
 };
 
-Switcher.defaultProps = {
-  value: false,
-  defaultValue: true,
+Toggle.defaultProps = {
+  defaultValue: false,
   disabled: false,
   onChange: () => {}
 };
 
-export default Switcher;
+export default Toggle;

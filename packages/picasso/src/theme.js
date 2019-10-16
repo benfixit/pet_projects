@@ -14,5 +14,8 @@ export default {
     success: '#28a745',
     info: '#17a2b8',
     secondary: '#6c757d'
+  },
+  fontFamily: {
+    primary: 'Arial Helvetica sans-serif'
   }
 };
