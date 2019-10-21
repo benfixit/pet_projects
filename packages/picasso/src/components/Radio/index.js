@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import { v4 } from 'uuid';
 import DivGroup from '../DivGroup';
 import Label from '../Label';
-import withBooleanValue from '../hoc/withBooleanValue';
-import withArrayValue from '../hoc/withArrayValue';
+import withObjectValue from '../hoc/withObjectValue';
 import { themeGet } from '../../utils/theme';
 
 const Icon = styled.svg`
@@ -14,7 +13,7 @@ const Icon = styled.svg`
   stroke-width: 2px;
 `;
 
-const StyledCheckBox = styled.span`
+const StyledRadioButton = styled.span`
   flex: 1;
   width: 18px;
   height: 18px;
@@ -24,7 +23,7 @@ const StyledCheckBox = styled.span`
   border: ${props =>
     props.checked ? 'solid lightblue' : `solid ${themeGet('colors.primary')}`};
   border-width: 2px;
-  border-radius: 5px;
+  border-radius: 18px;
 `;
 
 const LabelSpan = styled.span`
@@ -32,54 +31,58 @@ const LabelSpan = styled.span`
   padding: 2px;
 `;
 
-const HiddenCheckBox = styled.input.attrs(() => ({
-  type: 'checkbox'
+const HiddenRadioButton = styled.input.attrs(() => ({
+  type: 'radio'
 }))`
   opacity: 0;
   position: absolute;
   cursor: pointer;
 `;
 
-const CheckBoxComponent = props => {
-  const { value, label, name, onChange, ...rest } = props;
+const RadioButtonComponent = props => {
+  const { checked, value, label, name, onChange, ...rest } = props;
   const labelId = v4();
   return (
     <DivGroup px={0}>
       <Label htmlFor={labelId}>
-        <HiddenCheckBox
+        <HiddenRadioButton
           id={labelId}
           name={name}
-          checked={value}
+          value={value}
           onChange={onChange}
           {...rest}
         />
-        <StyledCheckBox checked={value}>
+        <StyledRadioButton checked={checked}>
           <Icon viewBox="0 0 24 24">
             <polyline points="20 6 9 17 4 12" />
           </Icon>
-        </StyledCheckBox>
+        </StyledRadioButton>
         <LabelSpan>{label}</LabelSpan>
       </Label>
     </DivGroup>
   );
 };
 
-CheckBoxComponent.propTypes = {
-  value: PropTypes.bool,
+RadioButtonComponent.propTypes = {
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.bool
+  ]),
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  checked: PropTypes.bool,
   onChange: PropTypes.func
 };
 
-CheckBoxComponent.defaultProps = {
-  value: false,
+RadioButtonComponent.defaultProps = {
+  value: '',
+  checked: false,
   onChange: () => {}
 };
 
-const CheckBox = withBooleanValue(CheckBoxComponent);
+const RadioButtonArray = withObjectValue(RadioButtonComponent);
 
-const CheckBoxArray = withArrayValue(CheckBox);
+export { RadioButtonArray };
 
-export { CheckBoxArray };
-
-export default CheckBox;
+export default RadioButtonComponent;

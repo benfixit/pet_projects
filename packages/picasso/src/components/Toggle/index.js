@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { BooleanValue } from 'react-values';
 import { themeGet } from '../../utils/theme';
+import withBooleanValue from '../hoc/withBooleanValue';
 
 const ToggleContainer = styled.div`
   position: relative;
@@ -28,34 +28,22 @@ const ToggleBall = styled.div`
 `;
 
 const Toggle = props => {
-  const { defaultValue, disabled, onChange, ...rest } = props;
+  const { value, onClick, ...rest } = props;
   return (
-    <BooleanValue
-      defaultValue={defaultValue}
-      disabled={disabled}
-      onChange={onChange}
-    >
-      {({ value: val, toggle }) => {
-        return (
-          <ToggleContainer on={val} onClick={toggle} {...rest}>
-            <ToggleBall on={val} />
-          </ToggleContainer>
-        );
-      }}
-    </BooleanValue>
+    <ToggleContainer on={value} onClick={onClick} {...rest}>
+      <ToggleBall on={value} />
+    </ToggleContainer>
   );
 };
 
 Toggle.propTypes = {
-  defaultValue: PropTypes.bool,
-  disabled: PropTypes.bool,
-  onChange: PropTypes.func
+  value: PropTypes.bool,
+  onClick: PropTypes.func
 };
 
 Toggle.defaultProps = {
-  defaultValue: false,
-  disabled: false,
-  onChange: () => {}
+  value: false,
+  onClick: () => {}
 };
 
-export default Toggle;
+export default withBooleanValue(Toggle);

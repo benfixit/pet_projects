@@ -20,7 +20,7 @@
     "react": "^16.9.0"
   },
   "dependencies": {
-    "check-types": "^10.0.0",
+    "check-types": "^10.1.1",
     "hoist-non-react-statics": "^3.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
@@ -28,6 +28,7 @@
     "react-values": "^0.3.3",
     "styled-components": "^4.3.2",
     "styled-system": "^5.1.2",
+    "uuid": "^3.3.3",
     "webpack": "^4.40.2"
   },
   "devDependencies": {

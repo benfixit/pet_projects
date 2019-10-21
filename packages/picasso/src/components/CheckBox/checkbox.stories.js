@@ -1,43 +1,17 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { SetValue } from 'react-values';
-import CheckBox from './index';
-import Flex from '../Flex';
-
-const countries = [
-  'brazil',
-  'nigeria',
-  'togo',
-  'cameroon',
-  'paraguay',
-  'russia'
-];
+import CheckBox, { CheckBoxArray } from './index';
 
 storiesOf('CheckBox', module)
-  .add('CheckBox', () => <CheckBox />)
-  .add('CheckBoxArray', () => (
-    <SetValue defaultValue={new Set(['nigeria', 'togo', 'cameroon'])}>
-      {({ value, add, remove }) => (
-        <Flex>
-          {countries.map(item => {
-            return (
-              <CheckBox
-                key={item}
-                value={item}
-                name={item}
-                checked={value.has(item)}
-                onChange={event => {
-                  return event.target.checked ? add(item) : remove(item);
-                }}
-              />
-            );
-          })}
-          <ul>
-            {Array.from(value).map(item => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </Flex>
-      )}
-    </SetValue>
-  ));
+  .add('CheckBox', () => <CheckBox name="Test" label="Test" />)
+  .add(
+    'CheckBoxArray',
+    () => (
+      <CheckBoxArray defaultValue={[true, false, true]}>
+        <CheckBox name="togo" label="Togo" />
+        <CheckBox name="paraguay" label="Paraguay" />
+        <CheckBox name="uruguay" label="Uruguay" />
+      </CheckBoxArray>
+    ),
+    { notes: 'CheckBox Array' }
+  );
