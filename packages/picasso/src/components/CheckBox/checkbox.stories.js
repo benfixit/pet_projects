@@ -7,7 +7,9 @@ storiesOf('CheckBox', module)
   .add(
     'CheckBoxArray',
     () => (
-      <CheckBoxArray defaultValue={[true, false, true]}>
+      <CheckBoxArray
+        defaultValue={{ togo: true, paraguay: false, uruguay: false }}
+      >
         <CheckBox name="togo" label="Togo" />
         <CheckBox name="paraguay" label="Paraguay" />
         <CheckBox name="uruguay" label="Uruguay" />

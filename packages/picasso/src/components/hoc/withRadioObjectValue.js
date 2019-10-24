@@ -5,8 +5,8 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import { v4 } from 'uuid';
 import { getDisplayName } from '../../utils/components';
 
-const withObjectValue = WrappedComponent => {
-  class WithObjectValue extends React.Component {
+const withRadioObjectValue = WrappedComponent => {
+  class WithRadioObjectValue extends React.Component {
     render() {
       const { defaultValue, value, onChange, disabled, children } = this.props;
       return (
@@ -40,11 +40,11 @@ const withObjectValue = WrappedComponent => {
     }
   }
 
-  WithObjectValue.displayName = `WithArrayValue${getDisplayName(
+  WithRadioObjectValue.displayName = `WithRadioObjectValue${getDisplayName(
     WrappedComponent
   )}`;
 
-  WithObjectValue.propTypes = {
+  WithRadioObjectValue.propTypes = {
     defaultValue: PropTypes.shape({}),
     value: PropTypes.shape({}),
     onChange: PropTypes.func,
@@ -52,7 +52,7 @@ const withObjectValue = WrappedComponent => {
     children: PropTypes.arrayOf(PropTypes.node)
   };
 
-  WithObjectValue.defaultProps = {
+  WithRadioObjectValue.defaultProps = {
     defaultValue: undefined,
     value: undefined,
     onChange: () => {},
@@ -60,7 +60,7 @@ const withObjectValue = WrappedComponent => {
     children: []
   };
 
-  return hoistNonReactStatics(WithObjectValue, WrappedComponent);
+  return hoistNonReactStatics(WithRadioObjectValue, WrappedComponent);
 };
 
-export default withObjectValue;
+export default withRadioObjectValue;

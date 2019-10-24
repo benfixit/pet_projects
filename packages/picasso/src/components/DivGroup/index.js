@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { flexbox, minWidth, border, padding } from 'styled-system';
+import { flexbox, minWidth, width, border, padding } from 'styled-system';
 import { themeGet } from '../../utils/theme';
 
 const DivGroup = styled.div`
@@ -11,6 +11,7 @@ const DivGroup = styled.div`
   font-family: ${themeGet('fontFamily.primary')};
   ${flexbox}
   ${minWidth}
+  ${width}
   ${border}
   ${padding}
 `;

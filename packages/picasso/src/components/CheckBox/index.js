@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import { v4 } from 'uuid';
 import DivGroup from '../DivGroup';
 import Label from '../Label';
-import withBooleanValue from '../hoc/withBooleanValue';
-import withArrayValue from '../hoc/withArrayValue';
+import withCheckBoxObjectValue from '../hoc/withCheckBoxObjectValue';
 import { themeGet } from '../../utils/theme';
 
 const Icon = styled.svg`
@@ -76,10 +75,8 @@ CheckBoxComponent.defaultProps = {
   onChange: () => {}
 };
 
-const CheckBox = withBooleanValue(CheckBoxComponent);
-
-const CheckBoxArray = withArrayValue(CheckBox);
+const CheckBoxArray = withCheckBoxObjectValue(CheckBoxComponent);
 
 export { CheckBoxArray };
 
-export default CheckBox;
+export default CheckBoxComponent;

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { v4 } from 'uuid';
 import DivGroup from '../DivGroup';
 import Label from '../Label';
-import withObjectValue from '../hoc/withObjectValue';
+import withRadioObjectValue from '../hoc/withRadioObjectValue';
 import { themeGet } from '../../utils/theme';
 
 const Icon = styled.svg`
@@ -81,7 +81,7 @@ RadioButtonComponent.defaultProps = {
   onChange: () => {}
 };
 
-const RadioButtonArray = withObjectValue(RadioButtonComponent);
+const RadioButtonArray = withRadioObjectValue(RadioButtonComponent);
 
 export { RadioButtonArray };
 

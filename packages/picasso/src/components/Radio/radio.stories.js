@@ -12,9 +12,9 @@ storiesOf('RadioButton', module).add(
         uruguay: false
       }}
     >
-      <RadioButton name="togo" label="Togo" />
-      <RadioButton name="paraguay" label="Paraguay" />
-      <RadioButton name="uruguay" label="Uruguay" />
+      <RadioButton name="country" label="Togo" />
+      <RadioButton name="country" label="Paraguay" />
+      <RadioButton name="country" label="Uruguay" />
     </RadioButtonArray>
   ),
   { notes: 'RadioButton Array' }

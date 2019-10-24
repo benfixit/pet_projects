@@ -7,6 +7,7 @@ const Label = styled.label`
   cursor: pointer;
   text-transform: capitalize;
   font-family: ${themeGet('fontFamily.primary')};
+  margin-bottom: 10px;
   ${color}
   ${typography}
   ${border}
